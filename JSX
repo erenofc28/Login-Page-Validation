@@ -1,0 +1,105 @@
+import "./login.css";
+import "bootstrap";
+import React from "react";
+import { useState } from "react";
+
+function Login() {
+  const [name,setName] = useState("");
+  const [nameVali,setNameVali] = useState("");
+  const [pass,setPass] = useState("");
+  const [passVali,setPassVali] = useState("");
+
+  const [border,setBorder]=useState("");
+  const[passBorder,setPassBorder]=useState("");
+
+
+console.log(name.length)
+
+ 
+
+console.log(pass)
+let name_vali=''
+
+
+const validation=()=>{
+  if(name.length>0){
+  console.log('name is empty')
+ setBorder("")
+
+
+}else{
+  setBorder("border-red")
+  
+}
+
+if(pass.length>8){
+  console.log('name is empty')
+ setPassBorder("")
+
+
+}else{
+  setPassBorder("border-red")
+
+}
+
+
+
+
+
+name===""?setNameVali("invalid username"):setNameVali("");
+pass.length<8?setPassVali("password must contain atleast 8 characters"):setPassVali("");
+if(name.length>0 && pass.length>8)
+{
+  alert('form submitted')
+  console.log(name)
+  console.log(pass)
+  setName("")
+  setPass("")
+  console.log(name)
+  console.log(pass)
+  
+  return true
+}
+
+
+}
+const input_validation="input_validation";
+
+
+  return (
+    <>
+      <div className="container" >
+        <div className="title-container">
+          <h1 id="title">Instagram</h1>
+        </div>
+        <h4>username</h4>
+        <input type="text" id="user-name" className={border} onChange={(e)=>{
+           setName(e.target.value);
+        }} />
+        <span >{nameVali}</span>
+        <h4>password</h4>
+        <input type="text" id="password" className={passBorder} onChange={(e)=>{
+          setPass(e.target.value)
+        }} />
+        <span>{passVali}</span>
+        <button  onClick={validation}
+          className={"btn btn-primary"}
+       
+        >
+          Submit
+        </button>
+        <hr />
+
+        <div className="footer">
+          <a href="#">Create Account?</a>
+          <a href="#">Forgotten Password?</a>
+        </div>
+      </div>
+    </>
+  );
+
+
+}
+
+
+export default Login;
